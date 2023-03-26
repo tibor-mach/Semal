@@ -1,15 +1,18 @@
 [build-system]
-requires = ["setuptools>=65", "setuptools_scm[toml]>=7"]
+requires = ["setuptools>=65", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "semal"
 description = "Tools for deserializing sklearn objects"
 dynamic = ["version"]
-readme = 'README.md'
+authors = [{ name = "Tibor Mach"}]
+license = { file = "LICENSE" }
+readme = "README.md"
+keywords = ["deserialization", "scikit-learn", "machine learning"]
 requires-python = ">=3.9"
 dependencies = [
-    "scikit-learn==1.2",
+    "scikit-learn>=1.2",
 ]
 
 [project.optional-dependencies]
@@ -34,6 +37,10 @@ dev = [
     "sphinx-jsonschema",
     "sphinx_design",
     ]
+
+
+[project.urls]
+Homepage = "https://github.com/tibor-mach/semal"
 
 [tool.black]
 line-length = 88
