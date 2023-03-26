@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=65", "setuptools_scm[toml]>=7"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semal"
+description = "Tools for deserializing sklearn objects"
+dynamic = ["version"]
+readme = 'README.md'
+requires-python = ">=3.9"
+dependencies = [
+    "scikit-learn==1.2",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==7.2",
+    "pytest-clarity==1.0.1",
+    "black==23.1.0",
+    "pre-commit",
+    "docformatter[tomli]",
+]
+
+dev = [
+    "semal[test]",
+    "jupyterlab==3.5",
+    "seaborn",
+    "furo",
+    "nbsphinx",
+    "numpydoc",
+    "sphinx",
+    "sphinx-copybutton",
+    "sphinx-inline-tabs",
+    "sphinx-jsonschema",
+    "sphinx_design",
+    ]
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)
+'''
+
+[tool.flake8]
+max-line-length = 88
+
+
+[tool.docformatter]
+recursive = true
+in-place = true
+pre-summary-newline = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["semal*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "semal.__version__"}
